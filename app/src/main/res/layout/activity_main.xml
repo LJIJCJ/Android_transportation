@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="定位地图"
+        android:text="定位地图_test"
         android:gravity="center"
         android:textSize="30sp"
         android:background="#00ffe1"/>
