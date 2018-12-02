@@ -1,42 +1,107 @@
 package com.example.a25726.transportation;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.baidu.mapapi.SDKInitializer;
-import com.baidu.mapapi.map.BaiduMap;
-import com.baidu.mapapi.map.MapView;
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends Activity {
 
-    private MapView mMapView = null;
+    public LocationClient mLocationClient;
+    public TextView positionText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SDKInitializer.initialize(getApplicationContext());
+
+        mLocationClient = new LocationClient(getApplicationContext());
+
+        mLocationClient.registerLocationListener(new MyLocationListener());
         setContentView(R.layout.activity_main);
 
-        mMapView = findViewById(R.id.bmapView);
-        BaiduMap mBaiduMap = mMapView.getMap();
-        mBaiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
+        positionText = findViewById(R.id.position_text_view);
+
+        List<String> permissionList = new ArrayList<>();
+
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            permissionList.add(Manifest.permission.ACCESS_FINE_LOCATION);
+        }
+
+        if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_PHONE_STATE)!=PackageManager.PERMISSION_GRANTED){
+            permissionList.add(Manifest.permission.READ_PHONE_STATE);
+        }
+
+        if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED){
+            permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+
+        if(!permissionList.isEmpty()){
+            String[] permissions=permissionList.toArray(new String[permissionList.size()]);
+            ActivityCompat.requestPermissions(MainActivity.this,permissions,1);
+        }else{
+            requestLocation();
+        }
+    }
+
+    private void requestLocation() {
+        //start（）就可以定位了，定位的结果会回调到前面注册的监听器中
+        mLocationClient.start();
     }
 
     @Override
-    protected void onResume(){
-        super.onResume();
-        mMapView.onResume();
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case 1:
+                if (grantResults.length > 0) {
+                    //循环每一个权限，有一个被拒绝则关闭当前程序
+                    for (int result : grantResults) {
+                        if (result != PackageManager.PERMISSION_GRANTED) {
+                            Toast.makeText(this, "必须同意所有权限才能使用本程序", Toast.LENGTH_SHORT).show();
+                            finish();
+                            return;
+                        }
+                    }
+                    //当权限全部被通过的时候才能开始地理位置定位
+                    requestLocation();
+                } else {
+                    Toast.makeText(this, "发生未知错误", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                break;
+            default:
+        }
     }
 
-    @Override
-    protected void onPause(){
-        super.onPause();
-        mMapView.onPause();
+    public class MyLocationListener implements BDLocationListener {
+        @Override
+        public void onReceiveLocation(BDLocation location){
+            StringBuilder currentPosiontion = new StringBuilder();
+            //获取纬度
+            currentPosiontion.append("纬度").append(location.getLatitude()).append("\n");
+            //获取经度
+            currentPosiontion.append("经度").append(location.getLongitude()).append("\n");
+            currentPosiontion.append("定位方式");
+            //获取定位方式
+            if(location.getLocType()==BDLocation.TypeGpsLocation){
+                currentPosiontion.append("GPS");
+            }else if(location.getLocType()==BDLocation.TypeNetWorkLocation){
+                currentPosiontion.append("网络");
+            }
+            positionText.setText(currentPosiontion);
+        }
     }
 
-    @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        mMapView.onDestroy();
-    }
+
 }
