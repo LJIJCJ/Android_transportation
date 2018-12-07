@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StartMenuActivity"
+    android:padding="10dp">
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/et_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:hint="起点"
+        android:textSize="20sp"
+        android:background="@drawable/et_bak"/>
+
+    <EditText
+        android:id="@+id/et_destination"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:hint="终点"
+        android:textSize="20sp"
+        android:background="@drawable/et_bak"/>
+
+    <Button
+        android:id="@+id/bt_toMap"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bt_bak"
+        android:text="规划"
+        android:textSize="25sp"/>
+
+</LinearLayout>
