@@ -290,8 +290,8 @@ public class DemoMainActivity extends Activity {
         BNRoutePlanNode eNode = new BNRoutePlanNode(116.39750, 39.90882, "北京天安门", "北京天安门", coType);
         switch (coType) {
             case CoordinateType.GCJ02: {
-                sNode = new BNRoutePlanNode(Const.StartLatitude, Const.StartLongitude, Const.StartName, Const.StartAddress, coType);
-                eNode = new BNRoutePlanNode(Const.EndLatitude, Const.EndLongitude, Const.EndName, Const.EndAddress, coType);
+                sNode = new BNRoutePlanNode(Const.StartLongitude, Const.StartLatitude, Const.StartName, Const.StartAddress, coType);
+                eNode = new BNRoutePlanNode(Const.EndLongitude, Const.EndLatitude, Const.EndName, Const.EndAddress, coType);
                 break;
             }
             case CoordinateType.WGS84: {
