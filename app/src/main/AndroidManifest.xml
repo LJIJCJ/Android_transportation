@@ -75,9 +75,6 @@
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
             android:label="@string/title_route_guide_demo"
             android:theme="@android:style/Theme.NoTitleBar" />
-        <activity android:name=".NaviDemo" />
-        <activity android:name=".GuideDemo" />
-        <activity android:name=".RoutePlanDemo" />
     </application>
 
 </manifest>

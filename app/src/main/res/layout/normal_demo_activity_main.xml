@@ -12,18 +12,21 @@
     android:paddingTop="@dimen/activity_vertical_margin" >
 
     <Button
+        android:visibility="gone"
         android:id="@+id/wgsNaviBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="国际经纬度坐标" />
 
     <Button
+        android:visibility="gone"
         android:id="@+id/gcjNaviBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="国测局坐标" />
 
     <Button
+        android:visibility="gone"
         android:id="@+id/bdmcNaviBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

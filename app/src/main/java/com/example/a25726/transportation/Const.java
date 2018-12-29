@@ -5,5 +5,5 @@ public class Const {
     public static double EndLatitude,EndLongitude;
     public static String City;
     public static String StartAddress = null,EndAddress = null;
-    public static String StartName = null,EndName = null;
+    public static String StartName = null,EndName = "";
 }

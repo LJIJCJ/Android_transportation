@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 
+import com.example.a25726.transportation.Const;
 import com.example.a25726.transportation.R;
 import com.baidu.navi.sdkdemo.EventHandler;
 import com.baidu.navisdk.adapter.BNRoutePlanNode;
@@ -142,7 +143,7 @@ public class DemoGuideActivity extends Activity {
                 public void handleMessage(android.os.Message msg) {
                     if (msg.what == MSG_RESET_NODE) {
                         mRouteGuideManager.resetEndNodeInNavi(
-                                new BNRoutePlanNode(116.21142, 40.85087, "百度大厦11",
+                                new BNRoutePlanNode(Const.EndLongitude, Const.EndLatitude, Const.EndName,
                                         null, CoordinateType.GCJ02));
                     }
                 }

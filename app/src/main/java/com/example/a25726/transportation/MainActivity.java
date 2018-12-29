@@ -42,7 +42,7 @@ import com.baidu.mapapi.search.geocode.GeoCoder;
 import com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListener;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
-import com.baidu.mapclient.liteapp.LiteActivity;
+import com.baidu.navi.sdkdemo.newif.DemoMainActivity;
 
 import java.util.ArrayList;
 
@@ -194,6 +194,12 @@ public class MainActivity extends AppCompatActivity {
              *第一个功能，返回自己所在的位置，箭头表示
              */
             case R.id.menu_item_mylocation://返回当前位置
+                myLinearLayout2 = findViewById(R.id.linearLayout2);
+                //显示地址搜索区域2
+                myLinearLayout2.setVisibility(View.GONE);
+                mLinearLayout3 = findViewById(R.id.guide);
+                mLinearLayout3.setVisibility(View.GONE);
+
                 myBaiduMap.clear();
                 getLocationByLL(myLatitude, myLongitude);
                 break;
@@ -205,6 +211,9 @@ public class MainActivity extends AppCompatActivity {
                 myLinearLayout2 = findViewById(R.id.linearLayout2);
                 //显示地址搜索区域2
                 myLinearLayout2.setVisibility(View.VISIBLE);
+
+                mLinearLayout3 = findViewById(R.id.guide);
+                mLinearLayout3.setVisibility(View.GONE);
                 final EditText myEditText_site = findViewById(R.id.editText_site);
                 Button button_site = findViewById(R.id.button_sitesearch);
 
@@ -275,20 +284,23 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_item_test:
                 mLinearLayout3 = findViewById(R.id.guide);
                 mLinearLayout3.setVisibility(View.VISIBLE);
+
+                myLinearLayout2 = findViewById(R.id.linearLayout2);
+                myLinearLayout2.setVisibility(View.GONE);
                 Button BtGo = findViewById(R.id.bt_go);
                 Button BtChange = findViewById(R.id.bt_change);
                 BtGo.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //ToDo
-                        if (Const.EndAddress.equals(null)) {
-                            Toast.makeText(MainActivity.this,"请输入目的地",Toast.LENGTH_SHORT).show();
+                        final EditText myEditText_site = findViewById(R.id.editText_site);
+                        final String site_str = myEditText_site.getText().toString();
+                        if(site_str.equals("") || Const.EndAddress.equals("")){
+                            Toast.makeText(MainActivity.this,"请输入地址",Toast.LENGTH_SHORT).show();
                             return;
+                        }else{
+                            Intent intent = new Intent(MainActivity.this,DemoMainActivity.class);
+                            startActivity(intent);
                         }
-                        Toast.makeText(MainActivity.this,String.format("%f,%f"+Const.EndAddress,Const.EndLatitude,Const.EndLongitude),Toast.LENGTH_SHORT).show();
-                        Toast.makeText(MainActivity.this,String.format("%f,%f"+Const.StartAddress,Const.StartLatitude,Const.StartLongitude),Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this,LiteActivity.class);
-                        startActivity(intent);
                     }
                 });
 
