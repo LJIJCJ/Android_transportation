@@ -5,30 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:id="@+id/linearLayout1"
-        android:visibility="gone">
 
-        <EditText
-            android:layout_width="120dp"
-            android:layout_height="match_parent"
-            android:hint="经度"
-            android:id="@+id/editText_lg"/>
-        <EditText
-            android:layout_width="120dp"
-            android:layout_height="match_parent"
-            android:hint="纬度"
-            android:id="@+id/editText_la"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="前往"
-            android:id="@+id/button_llsearch"/>
-
-    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -48,7 +25,32 @@
             android:id="@+id/button_sitesearch"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/guide"
+
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+        <Button
+            android:id="@+id/bt_go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:text="前往"/>
+        <Button
+            android:id="@+id/bt_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:text="更改"/>
+
+    </LinearLayout>
+
     <com.baidu.mapapi.map.MapView
+
         android:id="@+id/baiduMapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
