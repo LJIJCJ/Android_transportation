@@ -187,12 +187,12 @@ public class DemoMainActivity extends Activity {
                         } else {
                             result = "key校验失败, " + msg;
                         }
-                        Toast.makeText(DemoMainActivity.this, result, Toast.LENGTH_LONG).show();
+                        //Toast.makeText(DemoMainActivity.this, result, Toast.LENGTH_LONG).show();
                     }
 
                     @Override
                     public void initStart() {
-                        Toast.makeText(DemoMainActivity.this, "百度导航引擎初始化开始", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(DemoMainActivity.this, "百度导航引擎初始化开始", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -295,18 +295,18 @@ public class DemoMainActivity extends Activity {
                 break;
             }
             case CoordinateType.WGS84: {
-                sNode = new BNRoutePlanNode(116.300821, 40.050969, "百度大厦", "百度大厦", coType);
-                eNode = new BNRoutePlanNode(116.397491, 39.908749, "北京天安门", "北京天安门", coType);
+                sNode = new BNRoutePlanNode(Const.StartLongitude, Const.StartLatitude, Const.StartName, Const.StartAddress, coType);
+                eNode = new BNRoutePlanNode(Const.EndLongitude, Const.EndLatitude, Const.EndName, Const.EndAddress, coType);
                 break;
             }
             case CoordinateType.BD09_MC: {
-                sNode = new BNRoutePlanNode(12947471, 4846474, "百度大厦", "百度大厦", coType);
-                eNode = new BNRoutePlanNode(12958160, 4825947, "北京天安门", "北京天安门", coType);
+                sNode = new BNRoutePlanNode(Const.StartLongitude, Const.StartLatitude, Const.StartName, Const.StartAddress, coType);
+                eNode = new BNRoutePlanNode(Const.EndLongitude, Const.EndLatitude, Const.EndName, Const.EndAddress, coType);
                 break;
             }
             case CoordinateType.BD09LL: {
-                sNode = new BNRoutePlanNode(116.30784537597782, 40.057009624099436, "百度大厦", "百度大厦", coType);
-                eNode = new BNRoutePlanNode(116.40386525193937, 39.915160800132085, "北京天安门", "北京天安门", coType);
+                sNode = new BNRoutePlanNode(Const.StartLongitude, Const.StartLatitude, Const.StartName, Const.StartAddress, coType);
+                eNode = new BNRoutePlanNode(Const.EndLongitude, Const.EndLatitude, Const.EndName, Const.EndAddress, coType);
                 break;
             }
             default:
@@ -328,12 +328,12 @@ public class DemoMainActivity extends Activity {
                     public void handleMessage(Message msg) {
                         switch (msg.what) {
                             case IBNRoutePlanManager.MSG_NAVI_ROUTE_PLAN_START:
-                                Toast.makeText(DemoMainActivity.this, "算路开始", Toast.LENGTH_SHORT)
-                                        .show();
+                                /*Toast.makeText(DemoMainActivity.this, "算路开始", Toast.LENGTH_SHORT)
+                                        .show();*/
                                 break;
                             case IBNRoutePlanManager.MSG_NAVI_ROUTE_PLAN_SUCCESS:
-                                Toast.makeText(DemoMainActivity.this, "算路成功", Toast.LENGTH_SHORT)
-                                        .show();
+                                /*Toast.makeText(DemoMainActivity.this, "算路成功", Toast.LENGTH_SHORT)
+                                        .show();*/
                                 break;
                             case IBNRoutePlanManager.MSG_NAVI_ROUTE_PLAN_FAILED:
                                 Toast.makeText(DemoMainActivity.this, "算路失败", Toast.LENGTH_SHORT)
