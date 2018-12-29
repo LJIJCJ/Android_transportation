@@ -78,7 +78,6 @@
         <activity android:name=".NaviDemo" />
         <activity android:name=".GuideDemo" />
         <activity android:name=".RoutePlanDemo" />
-        <activity android:name=".Test"></activity>
     </application>
 
 </manifest>
