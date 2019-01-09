@@ -36,13 +36,15 @@
         android:id="@+id/mDb06llNaviBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="百度经纬度坐标" />
+        android:textSize="20sp"
+        android:text="开始导航" />
 
     <Button
         android:id="@+id/mGotoSettingsBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:textSize="20sp"
         android:text="导航设置" />
 
 </LinearLayout>

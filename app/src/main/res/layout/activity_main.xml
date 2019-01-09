@@ -21,7 +21,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="前往"
+            android:hint="ca"
             android:id="@+id/button_sitesearch"/>
     </LinearLayout>
 
@@ -54,6 +54,6 @@
         android:id="@+id/baiduMapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clickable="true"/>
+        android:clickable="true" />
 
 </LinearLayout>

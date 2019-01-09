@@ -240,9 +240,6 @@ public class MainActivity extends AppCompatActivity {
 
                                 Const.EndLatitude = endLatitude;
                                 Const.EndLongitude = endLongitude;
-                                String str = String.format("纬度：" + endLatitude + "经度" + endLongitude);
-                                //获取地理编码结果
-                                Toast.makeText(MainActivity.this,str,Toast.LENGTH_SHORT).show();
                                 getLocInfoByLL(endLatitude,endLongitude);
 
                                 myBaiduMap.clear();
