@@ -19,8 +19,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.baidu.navi.sdkdemo.NormalUtils;
+import com.baidu.navisdk.adapter.BNCommonSettingParam;
 import com.baidu.navisdk.adapter.BNRoutePlanNode;
 import com.baidu.navisdk.adapter.BNRoutePlanNode.CoordinateType;
+import com.baidu.navisdk.adapter.BNaviSettingManager;
 import com.baidu.navisdk.adapter.BaiduNaviManagerFactory;
 import com.baidu.navisdk.adapter.IBNRoutePlanManager;
 import com.baidu.navisdk.adapter.IBNTTSManager;
@@ -243,13 +245,13 @@ public class DemoMainActivity extends Activity {
     };
 
     private void initTTS() {
+
         // 使用内置TTS
         BaiduNaviManagerFactory.getTTSManager().initTTS(getApplicationContext(),
                 getSdcardDir(), APP_FOLDER_NAME, NormalUtils.getTTSAppID());
 
         // 不使用内置TTS
 //         BaiduNaviManagerFactory.getTTSManager().initTTS(mTTSCallback);
-
         // 注册同步内置tts状态回调
         BaiduNaviManagerFactory.getTTSManager().setOnTTSStateChangedListener(
                 new IBNTTSManager.IOnTTSPlayStateChangedListener() {

@@ -21,7 +21,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="ca"
+            android:hint="查找"
             android:id="@+id/button_sitesearch"/>
     </LinearLayout>
 
